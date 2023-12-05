@@ -1,5 +1,7 @@
 package com.yeonjidev.mallapi.service;
 
+import com.yeonjidev.mallapi.dto.PageRequestDTO;
+import com.yeonjidev.mallapi.dto.PageResponseDTO;
 import com.yeonjidev.mallapi.dto.TodoDTO;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
@@ -45,5 +47,16 @@ public class TodoServiceTests {
                 .build();
 
         todoService.modify(todoDTO);
+    }
+
+    @Test
+    public void testList(){
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
+                .page(2)
+                .size(10)
+                .build();
+        PageResponseDTO<TodoDTO> response = todoService.list(pageRequestDTO);
+
+        log.info(response);
     }
 }
