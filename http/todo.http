@@ -1,0 +1,23 @@
+###
+POST http://localhost:8080/api/todo/
+Content-Type: application/json
+
+{
+  "title": "Sample Title",
+  "writer": "user1",
+  "dueDate": "2023-12-27"
+}
+
+###
+PUT http://localhost:8080/api/todo/100
+Content-Type: application/json
+
+{
+  "tno": 100,
+  "title": "Updated Title",
+  "complete": true,
+  "dueDate": "2023-12-27"
+}
+
+###
+DELETE http://localhost:8080/api/todo/3
