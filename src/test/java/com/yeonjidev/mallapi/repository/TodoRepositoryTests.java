@@ -43,7 +43,7 @@ public class TodoRepositoryTests {
     public void testRead(){
         Long tno = 33L;
         Optional<Todo> result = todoRepository.findById(tno);
-        Todo todo = result.orElse(null);
+        Todo todo = result.orElseThrow();
         log.info(todo);
     }
 
@@ -51,7 +51,7 @@ public class TodoRepositoryTests {
     public void testModify(){
         Long tno = 33L;
         Optional<Todo> result = todoRepository.findById(tno);
-        Todo todo = result.orElse(null);
+        Todo todo = result.orElseThrow();
         todo.changeTitle("Modified 33...");
         todo.changeComplete(true);
         todo.changeDueDate(LocalDate.of(2023,10,10));
