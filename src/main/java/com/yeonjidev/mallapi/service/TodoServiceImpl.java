@@ -41,7 +41,7 @@ public class TodoServiceImpl implements TodoService {
     @Override
     public TodoDTO get(Long tno) {
         Optional<Todo> result = todoRepository.findById(tno);
-        Todo todo = result.orElse(null);
+        Todo todo = result.orElseThrow();
         TodoDTO dto = modelMapper.map(todo, TodoDTO.class);
 
         return dto;
@@ -51,7 +51,7 @@ public class TodoServiceImpl implements TodoService {
     public void modify(TodoDTO todoDTO) {
         Optional<Todo> result = todoRepository.findById(todoDTO.getTno());
 
-        Todo todo = result.orElse(null);
+        Todo todo = result.orElseThrow();
         todo.changeTitle(todoDTO.getTitle());
         todo.changeDueDate(todoDTO.getDueDate());
         todo.changeComplete(todoDTO.isComplete());
