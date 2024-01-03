@@ -3,6 +3,7 @@ package com.yeonjidev.mallapi.util;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -46,11 +47,16 @@ public class CustomFileUtil {
 
         for(MultipartFile multipartFile : files){
             String savedName = UUID.randomUUID().toString() + "_" + multipartFile.getOriginalFilename();
-
             Path savePath = Paths.get(uploadPath, savedName);
-
             try{
                 Files.copy(multipartFile.getInputStream(), savePath);
+                String contentType = multipartFile.getContentType();
+                if(contentType != null && contentType.startsWith("image")){
+                    Path thumbnailPath = Paths.get(uploadPath, "s_"+savedName);
+                    Thumbnails.of(savePath.toFile())
+                            .size(200, 200)
+                            .toFile(thumbnailPath.toFile());
+                }
                 uploadNames.add(savedName);
             }catch (IOException e){
                 throw new RuntimeException(e.getMessage());

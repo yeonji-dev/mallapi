@@ -39,10 +39,10 @@ Content-Disposition: form-data; name="pdesc"
 
 "Test Product Desc"
 --WebAppBoundary
-Content-Disposition: form-data; name="files"; filename="thankyou.pdf"
-Content-Type: application/pdf
+Content-Disposition: form-data; name="files"; filename="다운로드.jpeg"
+Content-Type: image/jpeg
 
-< ./files/thankyou.pdf
+< ./files/다운로드.jpeg
 --WebAppBoundary--
 
 ###
