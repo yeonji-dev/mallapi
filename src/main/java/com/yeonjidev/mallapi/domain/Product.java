@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "tbl_product")
 @Getter
-@ToString
+@ToString(exclude = "imageList")    //쿼리실행시 Image 관련 엔티티는 제외
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,7 +24,7 @@ public class Product {
     private String pdesc;
     private boolean delFlag;
 
-    @ElementCollection
+    @ElementCollection  //기본적으로 lazy loading 방식으로 동작
     @Builder.Default
     private List<ProductImage> imageList = new ArrayList<>();
 
