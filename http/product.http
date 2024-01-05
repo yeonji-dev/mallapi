@@ -1,0 +1,79 @@
+###
+POST http://localhost:8080/api/products/
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="pname"
+
+"Test Product"
+--WebAppBoundary
+Content-Disposition: form-data; name="pdesc"
+
+"Test Product Desc"
+--WebAppBoundary
+Content-Disposition: form-data; name="files"; filename="다운로드.jpeg"
+Content-Type: image/jpeg
+
+< ./files/다운로드.jpeg
+--WebAppBoundary--
+
+###
+POST http://localhost:8080/api/products/
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="pname"
+
+"Test Product"
+--WebAppBoundary
+Content-Disposition: form-data; name="pdesc"
+
+"Test Product Desc"
+--WebAppBoundary
+Content-Disposition: form-data; name="price"
+
+8000
+--WebAppBoundary
+Content-Disposition: form-data; name="files"; filename="statics_2023-02-01~2023-12-07.xlsx""
+
+< ./files/statics_2023-02-01~2023-12-07.xlsx
+--WebAppBoundary
+Content-Disposition: form-data; name="files"; filename="thankyou.pdf""
+
+< ./files/thankyou.pdf
+--WebAppBoundary--
+
+### list
+GET http://localhost:8080/api/products/list?page=1&size=5
+
+### read
+GET http://localhost:8080/api/products/13
+
+### modify
+PUT http://localhost:8080/api/products/13
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="pname"
+
+"Test Product modify"
+--WebAppBoundary
+Content-Disposition: form-data; name="pdesc"
+
+"Test Product Desc modify"
+--WebAppBoundary
+Content-Disposition: form-data; name="price"
+
+9000
+--WebAppBoundary
+Content-Disposition: form-data; name="files"; filename="IMG_2349.jpg""
+
+< ./files/다운로드.jpeg
+--WebAppBoundary
+Content-Disposition: form-data; name="files"; filename="thankyou.pdf""
+
+< ./files/thankyou.pdf
+--WebAppBoundary--
+
+### delete
+DELETE http://localhost:8080/api/products/13

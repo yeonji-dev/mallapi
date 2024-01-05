@@ -22,5 +22,6 @@ public class ProductDTO {
     private boolean delFlag;
     @Builder.Default
     private List<MultipartFile> files = new ArrayList<>();
+    @Builder.Default
     private List<String> uploadFileNames = new ArrayList<>();
 }
